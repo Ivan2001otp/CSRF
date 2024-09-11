@@ -10,13 +10,12 @@ import (
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
-
 	db "Golang-Csrf/db"
 )
 
 const (
-	privateKeyPath = "keys/id_rsa"
-	publicKeyPath  = "keys/id_rsa.pub"
+	privateKeyPath = "keys/id_rsa.rsa"
+	publicKeyPath  = "keys/id_rsa.rsa.pub"
 )
 
 var signKeyGlobal *rsa.PrivateKey
@@ -24,7 +23,6 @@ var verifyKeyGlobal *rsa.PublicKey
 
 func InitJWT() error {
 	signBytes, err := ioutil.ReadFile(privateKeyPath)
-
 	if err != nil {
 		log.Println("Wrong in InitJWT-1");
 
@@ -35,7 +33,9 @@ func InitJWT() error {
 
 	if err != nil {
 		log.Println("Wrong in InitJWT-2");
-		return err
+		log.Println(err);
+
+		
 	}
 
 	//read public key
