@@ -3,7 +3,7 @@ package server
 import (
 	"log"
 	"net/http"
-	middleware "Golang-Csrf/middleware"
+	middleware "Golang-Csrf/server/middleware"
 )
 
 func StartServer(hostname string,port string) error{
